@@ -2,6 +2,7 @@
 ## **Preámbulo y contexto general**
 League of Legends (LoL) es un mundialmente conocido juego tipo multiplayer online battle arena (MOBA).En términos generales, consiste en formar 2 equipos con 5 campeones cada uno y luchar hasta destruir el núcleo enemigo, por lo que la elección de los mismos es esencial. LoL cuenta con 134 campeones, cada uno con un diseño y estilo de juego único.
 
+League of Legends (LoL) es un mundialmente conocido juego tipo multiplayer online battle arena (MOBA).En términos generales, consiste en formar 2 equipos con 5 campeones cada uno y luchar hasta destruir el núcleo enemigo, por lo que la elección de los mismos es esencial. LoL cuenta con 134 campeones, cada uno con un diseño y estilo de juego único.
 
 ![lol-front](src/assets/lol-champions.png)
 ## **Elección de la data**
