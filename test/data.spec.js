@@ -224,6 +224,7 @@ const input1 = {
     }
   }
 };
+const input2 = [['Ahri', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg', {attack: 3, defense: 4, magic: 8, difficulty: 5}], ['Akali', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg', {attack: 5, defense: 3, magic: 8, difficulty: 7}], ['Evelynn', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Evelynn_0.jpg', { attack: 4, defense: 2, magic: 7, difficulty: 10}], ['LeeSin', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/_0.jpg', {attack: 8, defense: 5, magic: 3, difficulty: 6}]];
 const output1 = [['Ahri', 'https://www.masterypoints.com/assets/img/lol/champion_icons/Ahri.png'], ['Akali', 'https://www.masterypoints.com/assets/img/lol/champion_icons/Akali.png'], ['FiddleSticks', 'https://www.masterypoints.com/assets/img/lol/champion_icons/FiddleSticks.png'], ['Graves', 'https://www.masterypoints.com/assets/img/lol/champion_icons/Graves.png'], ['Evelynn', './assets/placeholder.png'], ['LeeSin', 'https://www.masterypoints.com/assets/img/lol/champion_icons/LeeSin.png']];
 const output2 = [['Ahri', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg', {attack: 3, defense: 4, magic: 8, difficulty: 5}], ['Akali', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg', {attack: 5, defense: 3, magic: 8, difficulty: 7}], ['Evelynn', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Evelynn_0.jpg', { attack: 4, defense: 2, magic: 7, difficulty: 10}], ['LeeSin', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/_0.jpg', {attack: 8, defense: 5, magic: 3, difficulty: 6}]];
 const output3 = [['LeeSin', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/_0.jpg', {attack: 8, defense: 5, magic: 3, difficulty: 6}], ['Akali', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg', {attack: 5, defense: 3, magic: 8, difficulty: 7}], ['Evelynn', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Evelynn_0.jpg', { attack: 4, defense: 2, magic: 7, difficulty: 10}], ['Ahri', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg', {attack: 3, defense: 4, magic: 8, difficulty: 5}]];
@@ -234,7 +235,7 @@ describe('getAll', () => {
     expect(typeof getAll).toBe('function');
   });
   it('debería retornar un array', () => {
-    expect(typeof getAll()).toBe('object');
+    expect(Array.isArray(getAll())).toBe(true);
   });
   it('debería retornar output1 para input1', () => {
     expect(getAll(input1)).toEqual(output1);
@@ -246,7 +247,7 @@ describe('roleFilter', () => {
     expect(typeof roleFilter).toBe('function');
   });
   it('debería retornar un array', () => {
-    expect(typeof roleFilter()).toBe('object');
+    expect(Array.isArray(roleFilter())).toBe(true);
   });
   it('debería retornar output1 para input1', () => {
     expect(roleFilter(input1, 'Assassin')).toEqual(output2);
@@ -258,7 +259,7 @@ describe('sortData', () => {
     expect(typeof sortData).toBe('function');
   });
   it('debería retornar un array', () => {
-    expect(typeof sortData(output2, 'attack', 'descendent')).toBe('object');
+    expect(Array.isArray(sortData(output2, 'attack', 'descendent'))).toBe(true);
   });
   it('debería retornar output1 para input1', () => {
     expect(sortData(output2, 'attack', 'descendent')).toEqual(output3);
@@ -270,10 +271,22 @@ describe('championDetails', () => {
     expect(typeof championDetails).toBe('function');
   });
   it('debería retornar un array', () => {
-    expect(typeof championDetails(input1, 'LeeSin')).toBe('object');
+    expect(Array.isArray(championDetails(input1, 'LeeSin'))).toBe(true);
   });
   it('debería retornar output1 para input1', () => {
     expect(championDetails(input1, 'LeeSin')).toEqual(output4);
+  });
+});
+
+describe('computeStats', () => {
+  it('debería ser una función', () => {
+    expect(typeof computeStats).toBe('function');
+  });
+  it('debería retornar un array', () => {
+    expect(typeof computeStats(input2)).toBe('number');
+  });
+  it('debería retornar output1 para input1', () => {
+    expect(computeStats(input2)).toEqual(7);
   });
 });
 

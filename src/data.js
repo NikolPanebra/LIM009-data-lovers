@@ -50,13 +50,11 @@ const sortData = (data, sortBy, sortOrder) => { // parameters: ([id,splash,[info
 // s t a t s 
 const computeStats = (data) => {// data = [id, splash, [info]] (array de arrays)
   let newArr = [];
-  let difficultyAverage;
   for (let i = 0; i < data.length; i++) { // itera por todos los campeones
     newArr.push(data[i][2]['difficulty']); // array con los valores de difficulty de 1 rol en específico
-    difficultyAverage = newArr.reduce((sum, val) => sum + val) / newArr.length;// un elemento con la suma de todos los valores de difficulty entre la cantidad de campeones de determinado rol  
-    console.log(difficultyAverage);
   }
-   
+  const difficultyAverage = newArr.reduce((sum, val) => sum + val) / newArr.length;// un elemento con la suma de todos los valores de difficulty entre la cantidad de campeones   
+  return difficultyAverage;
 };
 
 window.getAll = getAll;

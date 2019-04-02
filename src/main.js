@@ -12,8 +12,24 @@ const printAll = (arr) => { // arr = [[id, img], [id, img], [id, img], [id, img]
 
 const printCard = (roleArr) => {// roleArr = [id,splash,[info]]
   for (let i = 0; i < roleArr.length; i++) {
-    const str = `<div class="row headline-color auto"><div class="col-xs-12 col-md-3"><figure class="auto"><img class="border-box" src="${roleArr[i][1]}" alt="${roleArr[i][0]}-image" /></figure></div><div class="col-xs-12 col-md-9 border-box content-card"><h3 class="auto">${roleArr[i][0]}</h3><ul><li>Attack: ${roleArr[i][2]['attack']}</li><li>defense: ${roleArr[i][2]['defense']}</li><li>Magic: ${roleArr[i][2]['magic']}</li><li>Difficulty: ${roleArr[i][2]['difficulty']}</li></ul><button data-champion="${roleArr[i][0]}" class="btn block" type="button">SEE MORE</button></div></div>`;
-    // row.push(str);
+    const str = `
+      <div class="row headline-color auto">
+        <div class="col-xs-12 col-md-3">
+          <figure class="auto">
+            <img class="border-box" src="${roleArr[i][1]}" alt="${roleArr[i][0]}-image" />
+          </figure>
+        </div>
+        <div class="col-xs-12 col-md-9 border-box content-card">
+        <h3 class="auto">${roleArr[i][0]}</h3>
+        <ul>
+          <li>Attack: ${roleArr[i][2]['attack']}</li>
+          <li>defense: ${roleArr[i][2]['defense']}</li>
+          <li>Magic: ${roleArr[i][2]['magic']}</li>
+          <li>Difficulty: ${roleArr[i][2]['difficulty']}</li>
+        </ul>
+        <button data-champion="${roleArr[i][0]}" class="btn block" type="button">SEE MORE</button>
+        </div>
+      </div>`;
     document.getElementById('role-container').insertAdjacentHTML('beforeend', str);
   }
 };
@@ -35,6 +51,7 @@ assassinBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Assassin');
   printCard(arrFiltered);
+  document.getElementById('compute-stats').innerHTML = `Media Difficulty: ${computeStats(arrFiltered).toFixed(2)}`;// stats
   document.getElementById('sort-condition').innerHTML = 'Assassin';
   displayBlock('role-container', 'root');
   displayBlock('role-container', 'detailsContainer');// (muestra, oculta)
@@ -46,6 +63,7 @@ fighterBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Fighter');
   printCard(arrFiltered);
+  document.getElementById('compute-stats').innerHTML = `Media Difficulty: ${computeStats(arrFiltered).toFixed(2)}`;// stats
   document.getElementById('sort-condition').innerHTML = 'Fighter';
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
@@ -57,6 +75,7 @@ mageBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Mage');
   printCard(arrFiltered);
+  document.getElementById('compute-stats').innerHTML = `Media Difficulty: ${computeStats(arrFiltered).toFixed(2)}`;// stats
   document.getElementById('sort-condition').innerHTML = 'Mage';
   displayBlock('role-container', 'root');
   displayBlock('role-container', 'detailsContainer');
@@ -68,6 +87,7 @@ marksmanBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Marksman');
   printCard(arrFiltered);
+  document.getElementById('compute-stats').innerHTML = `Media Difficulty: ${computeStats(arrFiltered).toFixed(2)}`;// stats
   document.getElementById('sort-condition').innerHTML = 'Marksman';
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
@@ -79,6 +99,7 @@ tankBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Tank');
   printCard(arrFiltered);
+  document.getElementById('compute-stats').innerHTML = `Media Difficulty: ${computeStats(arrFiltered).toFixed(2)}`;// stats
   document.getElementById('sort-condition').innerHTML = 'Tank';
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
@@ -90,6 +111,7 @@ supportBtn.addEventListener('click', () => {
   document.getElementById('submenu').classList.remove('none');
   arrFiltered = roleFilter(LOL['data'], 'Support');
   printCard(arrFiltered);
+  document.getElementById('compute-stats').innerHTML = `Media Difficulty: ${computeStats(arrFiltered).toFixed(2)}`;// stats
   document.getElementById('sort-condition').innerHTML = 'Support';
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
@@ -101,7 +123,7 @@ const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats}
   const info = `<div class="col-xs-12 profiles border-box">
 				<div>
 				<h2 class="in-line">${profile[0]}</h2>
-				<button class="btn float-right"> HOME </button>
+				<button class="btn float-right" type="button"> HOME </button>
 				<h3>${profile[1]}</h3>
 				</div> 
 				<div>
@@ -169,33 +191,12 @@ const sortMenuBtn = document.getElementById('sort-menu');
 sortMenuBtn.addEventListener('click', (event) => {
   document.getElementById('role-container').innerHTML = '';
   const sortResult = sortData(arrFiltered, event.target.dataset.skill, 'descendent');
-  // console.log(sortResult);
   printCard(sortResult);
   displayBlock('role-container', 'root');	
   displayBlock('role-container', 'detailsContainer');
 });
-/*
-const attack = document.getElementById('attack');
-attack.addEventListener('click', () => {
-	sortData(LOL['data'], 'attack');
-})
-*/
 
-let rolDifficultyStats = computeStats();
-const printStats = (rolDifficultyStats) => {// promedio de la dificultad de cada rol -> [number]
-  const difficultyByRoL = `<div class="col-xs-12 border-box"> 
-												<div> 
-												<h2 class="white-color">Difficulty's stats for each rol</h2>
-												<p>${rolDifficultyStats}</p>
-												</div>
-									</div>
-                  `;
-  document.getElementById('computeStats').innerHTML = difficultyByRoL;
-};
-/*
-// show s t a t s 
-const statsBtn = document.getElementById('stats');
-statsBtn.addEventListener('click', () => {
-displayBlock('computeStats', 'root')
-displayBlock('computeStats', 'role-container')
-});*/
+const menuBtn = document.getElementById('menu-btn');
+menuBtn.addEventListener('click', () => {
+  document.getElementById('menu-content').classList.toggle('none');
+});

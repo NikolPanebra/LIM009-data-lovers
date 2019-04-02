@@ -12,6 +12,7 @@
     "roleFilter": false,
     "championDetails": false,
     "sortData": false,
+    "computeStats": false,
     "keyword-spacing": 1,
     "space-before-function-paren": [1, "never"],
     "eqeqeq": 1,
