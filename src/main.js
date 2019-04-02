@@ -181,12 +181,6 @@ attack.addEventListener('click', () => {
 })
 */
 
-// s t a t s 
-const statsBtn = document.getElementById('stats');
-statsBtn.addEventListener('click', () => {
-	computeStats(arrFiltered);
-});
-
 let rolDifficultyStats = computeStats();
 const printStats = (rolDifficultyStats) => {// promedio de la dificultad de cada rol -> [number]
   const difficultyByRoL = `<div class="col-xs-12 border-box"> 
@@ -195,7 +189,13 @@ const printStats = (rolDifficultyStats) => {// promedio de la dificultad de cada
 												<p>${rolDifficultyStats}</p>
 												</div>
 									</div>
-									`;
+                  `;
   document.getElementById('computeStats').innerHTML = difficultyByRoL;
 };
-
+/*
+// show s t a t s 
+const statsBtn = document.getElementById('stats');
+statsBtn.addEventListener('click', () => {
+displayBlock('computeStats', 'root')
+displayBlock('computeStats', 'role-container')
+});*/
