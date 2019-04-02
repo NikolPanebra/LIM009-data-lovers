@@ -123,7 +123,7 @@ const printDetails = (profile) => { // [name, title, img, blurb, {info}, {stats}
   const info = `<div class="col-xs-12 profiles border-box">
 				<div>
 				<h2 class="in-line">${profile[0]}</h2>
-				<button class="btn float-right" type="button"> HOME </button>
+				<a class="btn float-right" type="button"> HOME </button>
 				<h3>${profile[1]}</h3>
 				</div> 
 				<div>

@@ -14,46 +14,40 @@
         <div class="logo float-left">
           <a href="" title="home"><img src="./assets/logo.png" alt="champions-guide-logo" /></a>
         </div>
-      <nav class="headline-color clear">
-          <div class="dropdown border-box">
-            <button class="dropbtn light-gold-color">Rol <i class="fa fa-caret-down"></i></button>
-            <div class="dropdown-content">
-              <a class="block" id="assassin" href="#">Assassin</a>
-              <a class="block" id="fighter" href="#">Fighter</a>
-              <a class="block" id="mage" href="#">Mage</a>
-              <a class="block" id="marksman" href="#">Marksman</a>
-              <a class="block" id="tank" href="#">Tank</a>
-              <a class="block" id="support" href="#">Support</a>
-            </div>
-          </div> 
-          <div class="dropdown border-box">
-            <button id="stats" class="dropbtn light-gold-color"> Stats </button>
-          </div>  
+        <button id="menu-btn" class="menu-btn light-gold-color" type="button"><i class="fa fa-bars" aria-hidden="true"></i>
+</button>
+      <nav id="menu-content" class="navbar none center headline-color clear">
+            <ul>
+              <li><a class="block light-gold-color" id="assassin" href="#">ASSASSIN</a></li>
+              <li><a class="block light-gold-color" id="fighter" href="#">FIGHTER</a></li>
+              <li><a class="block light-gold-color" id="mage" href="#">MAGE</a></li>
+              <li><a class="block light-gold-color" id="marksman" href="#">MARKSMAN</a></li>
+              <li><a class="block light-gold-color" id="tank" href="#">TANK</a></li>
+              <li><a class="block light-gold-color" id="support" href="#">SUPPORT</a></li>
+            </ul>
       </nav>
     </header>
-    <aside class="border-box">
+    <aside class="border-box center">
       <div id="submenu" class="submenu none">
-        <h3 id="sort-condition"></h3> 
+        <h3 id="sort-condition">category</h3> 
+        <p id="compute-stats"></p>
         <div id="sort-menu" class="dropdown border-box">
-          <button class="dropbtn light-gold-color">Order By <i class="fa fa-caret-down"></i></button>
-        <a class="white-color" href="#" data-skill="attack">Attack</a>
-        <a class="white-color" href="#" data-skill="defense">Defense</a>
-        <a class="white-color" href="#" data-skill="magic">Magic</a>
-        <a class="white-color" href="#" data-skill="difficulty">Difficulty</a>
+          <h4 class="light-gold-color">Top to Bottom</h4>
+          <a class="white-color" href="#" data-skill="attack">Attack</a>
+          <a class="white-color" href="#" data-skill="defense">Defense</a>
+          <a class="white-color" href="#" data-skill="magic">Magic</a>
+          <a class="white-color" href="#" data-skill="difficulty">Difficulty</a>
         </div>
       </div>
     </aside>
     <main class="border-box">  
-      <h2><a class="gold-color" href="https://euw.leagueoflegends.com/es/news/champions-skins/free-rotation">CLICK HERE TO SEE THIS WEEK FREE ROTATION</a></h2>
-      <section id="root" class="container auto"></section>
+      <section id="root" class="container auto"><h1 class="gold-color">All you need to Know about LOL Champions</h1></section>
       <!--2da pantalla-->
       <section id="detailsContainer" class="none container auto">
+        <h2 class="gold-color">Champion Details</h2>
       </section>
       <!--CHAMPION DETAIL-->
       <section id="role-container" class="none">
-      </section>
-      <!--STATS-->
-      <section id="computeStats" class="container">
       </section>
     </main>
     <footer class="clear brown-color dark-gray-bg">
